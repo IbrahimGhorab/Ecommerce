@@ -1,0 +1,44 @@
+import { FeaturedType, Category } from './../../../types/index'
+import { produce } from 'immer'
+import { extractSheets } from 'spreadsheet-to-json'
+import { google } from 'googleapis'
+import type { NextApiRequest, NextApiResponse } from 'next'
+
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
+  const auth = new google.auth.GoogleAuth({
+    keyFile: 'credentials.json',
+    scopes: 'https://www.googleapis.com/auth/spreadsheets',
+  })
+
+  // optional custom format cell function
+  // const formatCell = (Category: Category) => Category.toLowerCase()
+
+  extractSheets(
+    {
+      // your google spreadhsheet key
+      spreadsheetKey: '1YF3npwm2TLf9M2JcWwA84DlKoo_tsdAipwTAjh5sQUw',
+      // your google oauth2 credentials or API_KEY
+      credentials: require('../../../credentials.json'),
+      // optional: names of the sheets you want to extract
+      sheetsToExtract: ['Category', 'SubCategory'],
+      // optional: custom function to parse the cells
+      // formatCell: formatCell,
+    },
+    function (
+      err: any,
+      data: { Category: Category[]; SubCategory: FeaturedType[] }
+    ) {
+      const subCategories = data.SubCategory.map((subCategory) => {
+        const categories = data.Category.filter((category) => {
+          category.id === subCategory.categoryId
+        })
+        return {
+          ...subCategory,
+          categories,
+        }
+      })
+
+      res.json(data.SubCategory)
+    }
+  )
+}
