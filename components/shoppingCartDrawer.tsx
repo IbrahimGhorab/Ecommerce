@@ -18,7 +18,7 @@ export default function ShoppingCartDrawer({ open, setOpen }: props) {
   const cartItem = useAppSelector((state) => state.cart)
   const dispatch = useDispatch()
 
-  console.log('cartItem: ', cartItem)
+  // console.log('cartItem: ', cartItem)
 
   function addItemToCart(data: CartItem) {
     dispatch(addToCart(data))
@@ -168,23 +168,27 @@ export default function ShoppingCartDrawer({ open, setOpen }: props) {
                       </p>
                       <div className="mt-6">
                         <Link href="/checkout">
-                          <button className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">
-                            Checkout
-                          </button>
+                          
+                            <button className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">
+                              Checkout
+                            </button>
+                          
                         </Link>
                       </div>
                       <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                         <p>
                           or{' '}
                           <Link href="/product">
-                            <button
-                              type="button"
-                              className="font-medium text-indigo-600 hover:text-indigo-500"
-                              onClick={() => setOpen(false)}
-                            >
-                              Continue Shopping
-                              <span aria-hidden="true"> &rarr;</span>
-                            </button>
+                            
+                              <button
+                                type="button"
+                                className="font-medium text-indigo-600 hover:text-indigo-500"
+                                onClick={() => setOpen(false)}
+                              >
+                                Continue Shopping
+                                <span aria-hidden="true"> &rarr;</span>
+                              </button>
+                            
                           </Link>
                         </p>
                       </div>

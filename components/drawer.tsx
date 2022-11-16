@@ -114,7 +114,7 @@ function Drawer({ open, setOpen }: props) {
   const getData = async function () {
     const res = await axios.get('http://localhost:3000/api/categories')
     categories = res.data
-    console.log('category: ', categories)
+    // console.log('category: ', categories)
   }
 
   useEffect(() => {

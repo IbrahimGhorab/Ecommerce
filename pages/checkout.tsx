@@ -12,7 +12,6 @@ import { v4 as uuid } from 'uuid'
 import { delAllCart, delFromCart } from 'redux/reducers/cartReducer'
 import Link from 'next/link'
 
-
 const deliveryMethods = [
   {
     id: 1,
@@ -48,7 +47,7 @@ export default function Example() {
     deliveryMethods[0]
   )
 
-  console.log(selectedDeliveryMethod)
+  // console.log(selectedDeliveryMethod)
 
   const addOrder = async (data: OrderType) => {
     try {
@@ -56,13 +55,10 @@ export default function Example() {
         'http://localhost:3000/api/orders/addOrder',
         data
       )
-      
     } catch (error) {
-      console.log(error)
+      // console.log(error)
     }
   }
-
-  
 
   const formik = useFormik({
     initialValues: {
@@ -597,7 +593,7 @@ export default function Example() {
                               {product.quantity} pec
                               {/* <Dropdown
                                 onChange={(value) => {                                  
-                                  console.log('hello world' + value)
+                                  // console.log('hello world' + value)
                                 }}
                                 values={Array.from(
                                   Array(product.availableQty),
@@ -653,14 +649,16 @@ export default function Example() {
                   <div className="mb-4 flex justify-center text-center text-sm text-gray-500">
                     <p>
                       <Link href="/product">
-                        <button
-                          type="button"
-                          className="font-medium text-indigo-600 hover:text-indigo-500"
-                          // onClick={() => setOpen(false)}
-                        >
-                          Continue Shopping
-                          <span aria-hidden="true"> &rarr;</span>
-                        </button>
+                        
+                          <button
+                            type="button"
+                            className="font-medium text-indigo-600 hover:text-indigo-500"
+                            // onClick={() => setOpen(false)}
+                          >
+                            Continue Shopping
+                            <span aria-hidden="true"> &rarr;</span>
+                          </button>
+                        
                       </Link>
                     </p>
                   </div>

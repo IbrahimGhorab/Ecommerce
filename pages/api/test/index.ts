@@ -40,7 +40,7 @@ export default async function handeler(
       ...values,
       id: orderId,
     })
-    console.log(orderDetails)
+    // console.log(orderDetails)
 
     for (let i = 0; i < orderDetails.length; i++) {
       const orderDetailsRow = await orderDetailsSheet.addRow({
@@ -51,10 +51,10 @@ export default async function handeler(
       })
     }
 
-    console.log(orderDetails)
+    // console.log(orderDetails)
     res.status(200).json({ name: 'date created' })
   } catch (error) {
-    console.log(error)
+    // console.log(error)
     // res.status(500).send(error)
   }
 }

@@ -38,13 +38,10 @@ const TrendingProducts = ({ products }: { products: Product[] }) => {
         >
           Trending Products
         </h2>
-        <Link href="/product">
-          <a
-            // href=""
-            className="hidden text-sm font-medium text-indigo-600 hover:text-indigo-500 md:block"
-          >
+        <Link href="/product"  className="hidden text-sm font-medium text-indigo-600 hover:text-indigo-500 md:block">
+          
             Shop the collection<span aria-hidden="true"> &rarr;</span>
-          </a>
+          
         </Link>
       </div>
 

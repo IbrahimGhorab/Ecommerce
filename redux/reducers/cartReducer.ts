@@ -42,9 +42,9 @@ export const cartSlice = createSlice({
       )
       if (itemInCart) {
         return state.map((item: CartItem) => {
-          console.log(item)
+          // console.log(item)
           if (item.id === action.payload.id) {
-            console.log(item.quantity)
+            // console.log(item.quantity)
             return { ...item, quantity: action.payload.quantity }
           } else {
             return item

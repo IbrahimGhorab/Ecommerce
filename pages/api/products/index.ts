@@ -64,7 +64,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         }
       })
 
-      res.json(products)
+      res.status(200).json(products)
     }
   )
 }

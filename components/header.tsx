@@ -92,17 +92,7 @@ function Header() {
 
   const cartItem = useAppSelector((state) => state.cart)
 
-  // let categories: Category[] = []
-
-  // const getData = async function () {
-  //   const res = await axios.get('http://localhost:3000/api/categories')
-  //   categories = res.data
-  //   // console.log('category: ', categories)
-  // }
-
-  // useEffect(() => {
-  //   getData()
-  // }, [])
+ 
 
   return (
     <>

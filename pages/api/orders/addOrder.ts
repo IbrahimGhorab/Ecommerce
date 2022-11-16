@@ -38,13 +38,13 @@ export default async function handler(
     } = req.body
 
     await doc.loadInfo() // loads document properties and worksheets
-    console.log(doc.title)
+    // console.log(doc.title)
     //   await doc.updateProperties({ title: 'renamed doc' })
 
     const ordersSheet = doc.sheetsByTitle['Orders'] // or use doc.sheetsById[id] or doc.sheetsByTitle[title] or doc.sheetsByIndex[0]
     const orderDetailsSheet = doc.sheetsByTitle['OrderDetails'] // or use doc.sheetsById[id] or doc.sheetsByTitle[title] or doc.sheetsByIndex[0]
-    console.log(ordersSheet.title)
-    console.log(ordersSheet.rowCount)
+    // console.log(ordersSheet.title)
+    // console.log(ordersSheet.rowCount)
 
     // adding / removing sheets
     //   const newSheet = await doc.addSheet({ title: 'hot new sheet!' })
@@ -70,7 +70,7 @@ export default async function handler(
     }) //{ name: 'Larry Page', email: 'larry@google.com' }
 
     for (let i = 0; i < orderDetails.length; i++) {
-      console.log(orderDetails)
+      // console.log(orderDetails)
       const orderDetalisRow = await orderDetailsSheet.addRow({
         id: uuid(),
         orderId: orderId,
@@ -95,7 +95,7 @@ export default async function handler(
     //   await rows[1].save(); // save updates
     // await rows[1].delete(); // delete a row
   } catch (error) {
-    console.log(error)
+    // console.log(error)
     res.send({ message: error })
   }
 }

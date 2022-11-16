@@ -7,8 +7,8 @@ const index = ({ products }: { products: Product[] }) => {
     <Layout>
       <div className="bg-white">
         <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-          <Link href="/">
-            <a className="text-xl font-bold text-gray-900">Home Page</a>
+          <Link href="/" className="text-xl font-bold text-gray-900">
+            Home Page
           </Link>
 
           <div className="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
@@ -42,13 +42,13 @@ const index = ({ products }: { products: Product[] }) => {
                     </div>
                   </div>
                   <div className="mt-6">
-                    <a
+                    <Link
                       href={product.href}
                       className="relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 py-2 px-8 text-sm font-medium text-gray-900 hover:bg-gray-200"
                     >
                       Show Details...
                       <span className="sr-only">, {product.name}</span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </Link>

@@ -7,57 +7,6 @@ import { useDispatch } from 'react-redux'
 import { addToCart } from 'redux/reducers/cartReducer'
 import Link from 'next/link'
 
-// const product: DisplayPRoduct = {
-//   id: 3,
-//   name: 'Basic Tee 6-Pack',
-//   price: 192,
-//   href: '#',
-//   images: [
-//     {
-//       src: 'https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg',
-//       alt: 'Two each of gray, white, and black shirts laying flat.',
-//     },
-//     {
-//       src: 'https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg',
-//       alt: 'Model wearing plain black basic tee.',
-//     },
-//     {
-//       src: 'https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg',
-//       alt: 'Model wearing plain gray basic tee.',
-//     },
-//     {
-//       src: 'https://tailwindui.com/img/ecommerce-images/product-page-02-featured-product-shot.jpg',
-//       alt: 'Model wearing plain white basic tee.',
-//     },
-//   ],
-//   colors: [
-//     { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
-//     { name: 'Gray', class: 'bg-gray-200', selectedClass: 'ring-gray-400' },
-//     { name: 'Black', class: 'bg-gray-900', selectedClass: 'ring-gray-900' },
-//   ],
-
-//   sizes: [
-//     { name: 'XXS', inStock: false },
-//     { name: 'XS', inStock: true },
-//     { name: 'S', inStock: true },
-//     { name: 'M', inStock: true },
-//     { name: 'L', inStock: true },
-//     { name: 'XL', inStock: true },
-//     { name: '2XL', inStock: true },
-//     { name: '3XL', inStock: true },
-//   ],
-//   description:
-//     '
-
-//   highlights: [
-//     'Hand cut and sewn locally',
-//     'Dyed with our proprietary colors',
-//     'Pre-washed & pre-shrunk',
-//     'Ultra-soft 100% cotton',
-//   ],
-//   details:
-//     'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal Gray" limited release.',
-// }
 const reviews: ReviewType = {
   href: '#',
   average: 4,
@@ -116,7 +65,7 @@ const ProductPage = ({ product }: { product: Product }) => {
       quantity: 1,
       availableQty: +product.availableQty!,
     }
-    console.log(item)
+    // console.log(item)
     dispatch(addToCart(item))
   }
 
@@ -143,6 +92,7 @@ const ProductPage = ({ product }: { product: Product }) => {
             <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
               {product.images?.map((image: ImageType) => (
                 <img
+                  key={image.src}
                   src={image.src}
                   alt={image.alt}
                   className="h-full w-full object-cover object-center"
@@ -177,9 +127,9 @@ const ProductPage = ({ product }: { product: Product }) => {
               <h3 className="sr-only">Reviews</h3>
               <div className="flex items-center">
                 <div className="flex items-center">
-                  {[0, 1, 2, 3, 4].map((rating) => (
+                  {[0, 1, 2, 3, 4].map((rating,idx) => (
                     <StarIcon
-                      key={rating}
+                      key={idx}
                       className={classNames(
                         reviews.average > rating
                           ? 'text-gray-900'
@@ -295,9 +245,9 @@ const ProductPage = ({ product }: { product: Product }) => {
                           {review.author}
                         </p>
                         <div className="mt-2 flex items-center">
-                          {[0, 1, 2, 3, 4].map((rating) => (
+                          {[0, 1, 2, 3, 4].map((rating,idx) => (
                             <StarIcon
-                              key={rating}
+                              key={idx}
                               className={classNames(
                                 review.rating > rating
                                   ? 'text-gray-900'
@@ -347,7 +297,7 @@ export const getStaticProps = async (context: any) => {
     `http://localhost:3000/api/products/${context.params.id}`
   )
   const data = await res.json()
-  console.log(data)
+  // console.log(data)
 
   return {
     props: {
